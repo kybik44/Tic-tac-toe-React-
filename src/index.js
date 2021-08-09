@@ -92,7 +92,9 @@ class Game extends React.Component {
           'К началу игры';
         return (
           <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+            <button 
+            className="move_button"
+            onClick={() => this.jumpTo(move)}>{desc}</button>
           </li>
         );
       });
@@ -100,6 +102,9 @@ class Game extends React.Component {
     let status;
     if(winner){
       status = `Выиграл ${winner}`
+      let div = document.querySelector(".game-next")
+      div.style.fontWeight = "bold"
+      div.style.fontSize = "32px"
     }else{
       status = `Следующий ходит: ${this.state.xIsNext ? "X" : "O"}`
     }
@@ -112,8 +117,8 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <div>{status}</div>
-          <ol>{moves}</ol>
+          <div className="game-next">{status}</div>
+          <ul>{moves}</ul>
         </div>
       </div>
     );
